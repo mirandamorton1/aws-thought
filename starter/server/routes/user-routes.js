@@ -26,22 +26,25 @@ router.get('/users', (req, res) => {
 
 
 // thoughts from a user on homepage
+// get thoughts from a user
 router.get('/users/:username', (req, res) => {
   console.log(`Querying for thought(s) from ${req.params.username}.`);
   const params = {
     TableName: table,
-    KeyConditionExpression: '#un = :user',
+    KeyConditionExpression: "#un = :user",
     ExpressionAttributeNames: {
-      '#un': 'username',
-      '#ca': 'createdAt',
-      '#th': 'thought',
+      "#un": "username",
+      "#ca": "createdAt",
+      "#th": "thought",
+      "#img": "image"    // add the image attribute alias
     },
     ExpressionAttributeValues: {
-      ':user': req.params.username,
+      ":user": req.params.username
     },
-    ProjectionExpression: '#th, #ca',
-    ScanIndexForward: false,
+    ProjectionExpression: "#un, #th, #ca, #img", // add the image to the database response
+    ScanIndexForward: false  // false makes the order descending(true is default)
   };
+  // database call ..
 
   dynamodb.query(params, (err, data) => {
     if (err) {
@@ -55,6 +58,7 @@ router.get('/users/:username', (req, res) => {
 }); // closes the route for router.get(users/:username)
 
 // Create new user at /api/users
+// Create new user
 router.post('/users', (req, res) => {
   const params = {
     TableName: table,
@@ -62,9 +66,10 @@ router.post('/users', (req, res) => {
       username: req.body.username,
       createdAt: Date.now(),
       thought: req.body.thought,
-    },
+      image: req.body.image  // add new image attribute
+    }
   };
-  // database call
+  // ... database call
   dynamodb.put(params, (err, data) => {
     if (err) {
       console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
