@@ -39,7 +39,11 @@
     - EC2 isntance
     - AIM authenitication 
     - SHH using Nginx
+   
+  ### Screenshots:
   
+  ![Screen Shot 2022-10-25 at 9 27 46 AM](https://user-images.githubusercontent.com/107001559/197803447-681c9496-e3bc-4028-ab64-bd4be4acbe04.png)
+
   ### Questions:
   If you have any questions regarding this app, feel free to contact me: 
   #### GitHub: https://github.com/mirandamorton1   
