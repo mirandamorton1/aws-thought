@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   
   ## Description
-  This is a journaling app built with React, Express, and Node.js whicwas deployed to an Amazon EC@ instance, using S3 bucket for storage and DynamoDB for backend data processing.  
+  This is a journaling app built with React, Express, and Node.js whicwas deployed to an Amazon EC2 instance, using S3 bucket for storage and DynamoDB for backend data processing.  
   
 
   ## Table of Contents
